@@ -44,3 +44,11 @@ function sortear() {
     document.getElementById("nome-amigo").focus();
     document.getElementById("nome-amigo").value = "";
 }
+
+function reiniciar() {
+    listaAmigos.length = 0;
+    document.querySelector(".friends__container").textContent = "";
+    document.getElementById("lista-sorteio").innerHTML = "";
+    document.getElementById("nome-amigo").value = "";
+    document.getElementById("nome-amigo").focus();
+}
