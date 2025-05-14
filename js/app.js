@@ -37,7 +37,7 @@ function sortear() {
     for (let i = 0; i < listaAmigos.length; i++) {
         const amigoAtual = listaAmigos[i];
         const proximoAmigo = listaAmigos[(i + 1) % listaAmigos.length];
-        listaResultado.push(`${amigoAtual} -> ${proximoAmigo}`);
+        listaResultado.push(`${amigoAtual} --> ${proximoAmigo}`);
     }
     log(listaResultado);
     elementoSorteados.innerHTML = listaResultado.join('<br>');
