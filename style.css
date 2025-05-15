@@ -71,10 +71,10 @@ body {
   align-items: center;
   border: 1px solid #1875e8;
   border-radius: 8px;
-  color: #fff;
+  color: #1875e8;
   display: flex;
   font-size: 21px;
-  font-weight: 400;
+  font-weight: 600;
   justify-content: center;
   line-height: 160%;
   margin-top: 1rem;
@@ -94,6 +94,39 @@ body {
   font-size: 24px;
   font-weight: 700;
   line-height: 110%;
+}
+
+.friend-badge {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.friend-badge:hover {
+    background-color: #ffe5e5;
+}
+
+.friend-badge span {
+    margin-right: 8px;
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.remove-button:hover {
+    transform: scale(1.2);
+    color: #d60000;
 }
 
 .form {
