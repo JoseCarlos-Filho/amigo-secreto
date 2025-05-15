@@ -13,7 +13,8 @@ function adicionar() {
     }
 
     listaAmigos.push(nomeAmigo);
-    elementoLista.textContent = listaAmigos.join(', ');
+    // elementoLista.textContent = listaAmigos.join(', ');
+    atualizarLista();
     document.getElementById("nome-amigo").value = "";
     log(listaAmigos);
 }
@@ -45,9 +46,50 @@ function sortear() {
     document.getElementById("nome-amigo").value = "";
 }
 
+function atualizarLista() {
+    const elementoLista = document.querySelector(".friends__container");
+    elementoLista.innerHTML = "";
+
+    listaAmigos.forEach((amigo, index) => {
+        const badge = document.createElement("div");
+        badge.className = "friend-badge";
+
+        const nome = document.createElement("span");
+        nome.textContent = amigo;
+
+        const btnRemover = document.createElement("button");
+        btnRemover.innerHTML = "X";
+        btnRemover.title = "Remover amigo";
+        btnRemover.className = "remove-button";
+
+        btnRemover.addEventListener("click", () => {
+            removerAmigo(index);
+        });
+        
+
+        // span.style.cursor = "pointer";
+        // span.style.marginRight = "10px";
+        // span.title = "Clique para remover";
+        
+        // span.addEventListener("click", () => {
+        //     removerAmigo(index);
+        // });
+
+        badge.appendChild(nome);
+        badge.appendChild(btnRemover);
+        elementoLista.appendChild(badge);
+    });
+}
+
+function removerAmigo(index) {
+    listaAmigos.splice(index, 1);
+    atualizarLista();
+}
+
 function reiniciar() {
     listaAmigos.length = 0;
-    document.querySelector(".friends__container").textContent = "";
+    // document.querySelector(".friends__container").textContent = "";
+    atualizarLista();
     document.getElementById("lista-sorteio").innerHTML = "";
     document.getElementById("nome-amigo").value = "";
     document.getElementById("nome-amigo").focus();
