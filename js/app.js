@@ -4,7 +4,7 @@ const listaAmigos = [];
 function adicionar() {
     
     const nomeAmigo = document.getElementById("nome-amigo").value;
-    const elementoLista = document.querySelector(".friends__container");
+    // const elementoLista = document.querySelector(".friends__container");
 
     if (!nomeAmigo || nomeAmigo.trim() === "") {
         alert("Por favor, insira um nome de amigo válido.");
@@ -12,7 +12,16 @@ function adicionar() {
         return;
     }
 
-    listaAmigos.push(nomeAmigo);
+    
+    listaAmigos.forEach(amigo => {
+        if (amigo === nomeAmigo) {
+            alert("Este amigo já está na lista.");
+            document.getElementById("nome-amigo").focus();
+            return;
+        } else {
+            listaAmigos.push(nomeAmigo);
+        }
+    })
     // elementoLista.textContent = listaAmigos.join(', ');
     atualizarLista();
     document.getElementById("nome-amigo").value = "";
@@ -20,12 +29,17 @@ function adicionar() {
 }
 
 function sortear() {
-    const elementoSorteados = document.getElementById("lista-sorteio");
+    if (listaAmigos.length <= 1) {
+        alert("É necessário pelo menos dois amigos para sortear.");
+        return;
+    }
     
     if (listaAmigos.length === 0) {
         alert("Não há amigos para sortear.");
         return;
     }
+
+    const elementoSorteados = document.getElementById("lista-sorteio");
 
     // algoritmo de Fisher-Yates (Knuth shuffle)
     for (let i = listaAmigos.length - 1; i > 0; i--) {
